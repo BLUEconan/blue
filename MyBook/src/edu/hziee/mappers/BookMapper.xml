@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.hziee.mappers.BookMapper">
+    <select id="findById" resultType="edu.hziee.models.Book">
+        select id,title,brief,author from Book where id=#{id}
+    </select>
+    
+    <select id="findAll" resultType="edu.hziee.models.Book">
+        select id,title,brief,author from Book
+    </select>
+    
+    <insert id="add" parameterType="edu.hziee.models.Book"
+         useGeneratedKeys="true" keyProperty="id">
+        insert into Book (title,brief,author) 
+        values (#{title},#{brief},#{author}) 
+    </insert>
+    
+    <update id="modify" parameterType="edu.hziee.models.Book">
+        update Book set 
+        title=#{title},
+        brief=#{brief},
+        author=#{author} 
+        where id=#{id}
+    </update>
+    
+    <delete id="delete">
+        delete from Book 
+        where id=#{id}
+    </delete>
+   
+   
+</mapper>
